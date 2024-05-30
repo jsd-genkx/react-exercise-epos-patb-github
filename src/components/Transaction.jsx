@@ -15,10 +15,10 @@ const Transaction = ({
   const [editedCustomer, setEditedCustomer] = useState(transaction.customer);
 
   const handleEditClick = () => {
-    setIsEditing(true);
+    setIsEditing(true); // sets isEditing to true
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = () => { 
     const updatedTransaction = {
       ...transaction,
       date: editedDate,
@@ -29,18 +29,18 @@ const Transaction = ({
         0
       ),
     };
-    updateTransaction(updatedTransaction);
+    updateTransaction(updatedTransaction); // updates transactions array in App to include new properties and values
     setIsEditing(false);
   };
 
-  const handleCancelClick = () => {
+  const handleCancelClick = () => { // resets editedOrderDetails, editedDate, editedCustomer to the value in the transaction object
     setIsEditing(false);
     setEditedOrderDetails([...transaction.orderDetails]);
     setEditedDate(transaction.date);
     setEditedCustomer(transaction.customer);
   };
 
-  const handleQuantityChange = (index, newQuantity) => {
+  const handleQuantityChange = (index, newQuantity) => { // alters editedOrderDetails
     setEditedOrderDetails((prevDetails) =>
       prevDetails.map((item, i) =>
         i === index ? { ...item, quantity: newQuantity } : item
@@ -54,14 +54,16 @@ const Transaction = ({
         `Are you sure you want to delete transaction ${transaction.transactionId}?`
       )
     ) {
-      deleteTransaction(transaction.transactionId);
+      // calls deleteTransaction passed down from App 
+      // to filter from the transactions array in App the transaction with the matching ID
+      deleteTransaction(transaction.transactionId); 
     }
   };
 
   return (
     <div className="mb-4 p-2 border bg-[#424242] rounded text-white">
       <h4 className="font-bold">Transaction ID: {transaction.transactionId}</h4>
-      {isEditing ? (
+      {isEditing ? ( 
         <select
           value={editedCustomer}
           onChange={(e) => setEditedCustomer(e.target.value)}
@@ -117,13 +119,13 @@ const Transaction = ({
         <div className="flex space-x-2 mt-2">
           <button
             className="px-4 py-2 bg-green-600 text-white font-bold rounded hover:bg-green-700 cursor-pointer"
-            onClick={handleSaveClick}
+            onClick={handleSaveClick} // calls handleSaveClick when clicked
           >
             Save
           </button>
           <button
             className="px-4 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-700 cursor-pointer"
-            onClick={handleCancelClick}
+            onClick={handleCancelClick} // calls handleCancelClick when clicked
           >
             Cancel
           </button>
@@ -132,13 +134,13 @@ const Transaction = ({
         <div className="flex space-x-2 mt-2">
           <button
             className="px-4 py-2 bg-yellow-600 text-white font-bold rounded hover:bg-yellow-700 cursor-pointer"
-            onClick={handleEditClick}
+            onClick={handleEditClick} // calls handleEditClick when clicked
           >
             Edit Transaction
           </button>
           <button
             className="px-4 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-700 cursor-pointer"
-            onClick={handleDeleteClick}
+            onClick={handleDeleteClick} // calls handleDeleteClick when clicked
           >
             Delete Transaction
           </button>

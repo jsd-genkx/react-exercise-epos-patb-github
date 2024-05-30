@@ -5,6 +5,7 @@ import { FaCashRegister } from "react-icons/fa";
 const Product = ({ product, addToCart }) => {
   const [quantity, setQuantity] = React.useState(1);
 
+  // changes the 'quantity' state when user inputs the quantity
   const handleQuantityChange = (e) => {
     setQuantity(Number(e.target.value));
   };
@@ -15,7 +16,7 @@ const Product = ({ product, addToCart }) => {
       <p className="text-white">${product.price}</p>
       <button
         className="px-4 py-2 text-white font-bold cursor-pointer"
-        onClick={() => addToCart(product.id, false)}
+        onClick={() => addToCart(product.id, false)} // adds product to the cart using the addToCart function passed down all the way fom App
       >
         <img
           src={product.image}
@@ -29,7 +30,7 @@ const Product = ({ product, addToCart }) => {
           type="number"
           value={quantity}
           min="1"
-          onChange={handleQuantityChange}
+          onChange={handleQuantityChange} // calls handleQuantityChange when user inputs data
           className="mb-2 w-16 h-full bg-[#424242] text-white text-center border rounded"
         />
         <button

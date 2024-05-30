@@ -10,10 +10,12 @@ function App() {
   const [transactions, setTransactions] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(customers[0].id);
 
+  // Adds product to cart depending on the productId
   const addToCart = (productId, isMultiple, quantity = 1) => {
     const product = products.find((p) => p.id === productId);
     const quantityToAdd = isMultiple ? parseInt(quantity, 10) : 1;
 
+    // modifies cartItems
     setCartItems((prevCartItems) => {
       const existingItem = prevCartItems.find((item) => item.id === productId);
       if (existingItem) {
@@ -28,7 +30,7 @@ function App() {
     });
   };
 
-  const clearCart = () => {
+  const clearCart = () => { // resets cartItems to []
     setCartItems([]);
   };
 

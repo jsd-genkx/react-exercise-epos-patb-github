@@ -2,14 +2,15 @@ import PropTypes from "prop-types";
 import Transaction from "./Transaction";
 
 const TransactionList = ({
-  transactions,
-  updateTransaction,
-  deleteTransaction,
+  transactions, // transactions state value passed from App
+  updateTransaction, // function passed from App
+  deleteTransaction, // function passed from App
   customers,
 }) => {
   return (
-    <div>
+    <div> 
       {transactions.map((transaction) => (
+        // list of Transaction components
         <Transaction
           key={transaction.transactionId}
           transaction={transaction}
