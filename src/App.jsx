@@ -8,7 +8,6 @@ import products from "./data/products";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [transactions, setTransactions] = useState([]);
-
   const [selectedCustomer, setSelectedCustomer] = useState(customers[0].id);
 
   const addToCart = (productId, isMultiple, quantity = 1) => {
